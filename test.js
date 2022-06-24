@@ -11,6 +11,10 @@ describe("wallet", () => {
         assert(wallet.address);
     });
 
+    it("should have an address", () => {
+        assert(wallet.privateKey);
+    });
+
     it("the address should be 40 hex characters long", () => {
         // slice off the 0x
         const address = wallet.address.slice(2);

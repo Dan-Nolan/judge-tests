@@ -2,7 +2,7 @@ const axios = require('axios');
 const JSZip = require('jszip');
 const fs = require('fs');
 
-const host = "";
+const host = "http://34.125.207.38:2358/";
 const setupContents = fs.readFileSync("./setup.js").toString();
 const testContents = fs.readFileSync("./test.js").toString();
 
@@ -39,3 +39,11 @@ function formatStream(outputStream) {
         console.log(ex.message);
     }
 })();
+
+function atob(a) {
+    return Buffer.from(a, 'base64').toString('binary');
+}
+
+function btoa(a) {
+    return Buffer.from(a, 'binary').toString('base64');
+}
