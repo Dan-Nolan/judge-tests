@@ -1,23 +1,12 @@
 const assert = require('assert');
-const ethers = require('ethers');
+const add = require('../add');
 
-describe("wallet", () => {
-    let wallet;
-    before(() => {
-        wallet = ethers.Wallet.createRandom();
+describe("add function", () => {
+    it("should add even numbers", () => {
+        assert(add(2,2) === 4);
     });
 
-    it("should have an address", () => {
-        assert(wallet.address);
-    });
-
-    it("should have an address", () => {
-        assert(wallet.privateKey);
-    });
-
-    it("the address should be 40 hex characters long", () => {
-        // slice off the 0x
-        const address = wallet.address.slice(2);
-        assert(address.length === 40);
+    it("should add odd numbers", () => {
+        assert(add(1,3) === 4);
     });
 });

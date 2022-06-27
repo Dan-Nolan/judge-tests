@@ -3,6 +3,7 @@ const JSZip = require('jszip');
 const fs = require('fs');
 
 const host = "http://34.125.207.38:2358/";
+const codeContents = fs.readFileSync("./add.js").toString();
 const setupContents = fs.readFileSync("./setup.js").toString();
 const testContents = fs.readFileSync("./test.js").toString();
 
@@ -15,8 +16,9 @@ function formatStream(outputStream) {
 
     try {
         const zip = new JSZip();
-        const img = zip.folder("test");
-        img.file("test.js", testContents);
+        const testFolder = zip.folder("test");
+        testFolder.file("test.js", testContents);
+        zip.file("add.js", codeContents);
 
         const content = await zip.generateAsync({ type: "base64" });
 
